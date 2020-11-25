@@ -1,9 +1,13 @@
 {
     "Constants": [{
-        "Constant":{}
+        "Constant":{
+            "Figitr": 1
+        }
     }],
     "Paths": [
         {"Path": "./src" },
+        {"Path":"./src/Part1"},
+        {"Path":"./src/Part1/sub"},
         {"Path":"./res"}
     ],
     "Save": [{
