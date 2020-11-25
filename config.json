@@ -1,0 +1,15 @@
+{
+    "Constants": [{
+        "Constant":{}
+    }],
+    "Paths": [
+        {"Path": "./src" },
+        {"Path":"./res"}
+    ],
+    "Save": [{
+        "Type":"WaveFile",
+        "Filename":"filteredsig.wav",
+        "SamplingFrequency":"11025",
+        "MatlabVariable":"yout"
+    }]
+}
