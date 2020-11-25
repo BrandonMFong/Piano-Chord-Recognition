@@ -5,3 +5,6 @@ sinewave
 
 cosinewave
 
+cosinephaseshift
+
+squarewave
