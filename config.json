@@ -1,13 +1,19 @@
 {
     "Constants": [{
         "Constant":{
-            "Figitr": 1
+            "Figitr": 1,
+            "Part2":{
+                "Step2":{
+                    "AudioFile":"bfong1.wav"
+                }
+            }
         }
     }],
     "Paths": [
         {"Path": "./src" },
         {"Path":"./src/Part1"},
         {"Path":"./src/Part1/sub"},
+        {"Path":"./src/Part2"},
         {"Path":"./res"}
     ],
     "Save": [{
