@@ -8,3 +8,9 @@ cosinewave
 cosinephaseshift
 
 squarewave
+
+squarepulse
+
+gaussianpulse
+
+expdecay
