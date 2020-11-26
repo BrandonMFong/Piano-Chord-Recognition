@@ -6,6 +6,11 @@
                 "Step2":{
                     "AudioFile":"bfong1.wav"
                 }
+            },
+            "Part3":{
+                "Step1":{
+                    "ImageFile":"lena.png"
+                }
             }
         }
     }],
@@ -14,6 +19,7 @@
         {"Path":"./src/Part1"},
         {"Path":"./src/Part1/sub"},
         {"Path":"./src/Part2"},
+        {"Path":"./src/Part3"},
         {"Path":"./res"}
     ],
     "Save": [{
