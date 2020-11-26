@@ -14,3 +14,5 @@ squarepulse
 gaussianpulse
 
 expdecay
+
+chirpsig
