@@ -3,17 +3,24 @@
 
 lena = im2double(imread(const.Part3.Step1.ImageFile)); % read img and convert to a double matrix 
 
-fig(); 
-imshow(lena);
-matrix = dctmtx(size(lena,1));
+% get the dct matrix
+D = dctmtx(8);
 
-Lena1 = matrix*lena(1)*matrix';
-Lena2 = matrix*lena(2)*matrix';
-Lena3 = matrix*lena(3)*matrix';
+% process image
+dct = @(block_struct) D * block_struct.data * D';
+B = blockproc(lena,[8 8], dct); 
 
-Lena = matrix.*lena.*matrix';
+% apply mask on dct coefficients
+% this is applying compression because we don't need those high freq components 
+mask = @(block_struct) csvread(const.Part3.Step1.maskFile) .* block_struct.data;
+B2 = blockproc(B,[8 8], mask);
 
-fig();imshow(Lena1);
-fig();imshow(Lena2);
-fig();imshow(Lena3);
-fig();imshow(Lena(1));
+% not sure what this is for 
+non_zero_B = length (find(B));
+non_zero_B2 = length (find(B2));
+
+invdct = @(block_struct) D' * block_struct.data * D;
+lena_compressed = blockproc(B2,[8 8], invdct);
+
+fig();imshow(lena);
+fig();imshow(lena_compressed);

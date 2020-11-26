@@ -9,7 +9,8 @@
             },
             "Part3":{
                 "Step1":{
-                    "ImageFile":"lena.png"
+                    "ImageFile":"lena_gray.bmp",
+                    "maskFile":"mask.csv"
                 }
             }
         }
