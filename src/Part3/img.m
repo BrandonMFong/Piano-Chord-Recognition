@@ -1,5 +1,7 @@
 % Compressing the lena image 
 % https://www.mathworks.com/help/images/ref/dctmtx.html 
+% Since this is a colored img, I have to do the grayscale alg from the example three times
+% I am assuming the colored image being 3D represents RGB
 
 % lena_read = imread(const.Part3.Step1.ImageFile); % read img and convert to a double matrix 
 lena = im2double(imread(const.Part3.Step1.ImageFile)); % read img and convert to a double matrix 
@@ -19,7 +21,7 @@ dct = @(block_struct) D * block_struct.data * D';
 % process compressed image
 invdct = @(block_struct) D' * block_struct.data * D;
 
-% alloc 3d matrix
+% alloc empty 3d matrix
 final_img = zeros(r, c, dim); 
 
 % Process
@@ -37,9 +39,8 @@ for itr = 1:dim % will always be 3
     lena_compressed = blockproc(B2,[8 8], invdct);
     
     
-    % show the compressed img
-    fig();imshow(lena_compressed);
-    final_img(:,:,itr) = lena_compressed;
+    % fig();imshow(lena_compressed); % shows the each dim
+    final_img(:,:,itr) = lena_compressed; % combine all dimension 
 end
 
-fig();imshow(final_img);
+fig();imshow(final_img); % show the image
