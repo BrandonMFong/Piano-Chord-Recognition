@@ -1,7 +1,8 @@
 % Compressing the lena image 
 % https://www.mathworks.com/help/images/ref/dctmtx.html 
 
-lena = im2double(imread(const.Part3.Step1.ImageFile)); % read img and convert to a double matrix 
+lena_read = imread(const.Part3.Step1.ImageFile); % read img and convert to a double matrix 
+lena = im2double(lena_read); % read img and convert to a double matrix 
 
 % get the dct matrix
 D = dctmtx(8);
