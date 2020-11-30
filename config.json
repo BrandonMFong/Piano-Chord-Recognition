@@ -14,8 +14,9 @@
                 }
             },
             "Part4":{
-                "AudioFile":"G3.wav",
-                "NotesTable":"notestable.csv"
+                "AudioFile":"C4.wav",
+                "NotesTable":"notestable.csv",
+                "AmplitudeThreshold":400
             }
         }
     }],

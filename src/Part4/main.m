@@ -20,10 +20,15 @@ ylabel('Amplitude');
 maxval = 0;
 amp = 0;
 len = length(freq);
+thresh = const.Part4.NotesTable;
 for itr = 1:len
-    if(ydft(itr) > amp)
-        maxval = freq(itr);
-        amp = ydft(itr);
+    if(ydft(itr) > thresh)
+        if(ydft(itr) > amp)
+            maxval = freq(itr);
+            amp = ydft(itr);
+        else 
+            break;
+        end
     end
 end
 
