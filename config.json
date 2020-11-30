@@ -14,7 +14,7 @@
                 }
             },
             "Part4":{
-                "AudioFile":"C4.wav",
+                "AudioFile":"F#.wav",
                 "NotesTable":"notestable.csv",
                 "AmplitudeThreshold":400
             }
@@ -27,7 +27,9 @@
         {"Path":"./src/Part2"},
         {"Path":"./src/Part3"},
         {"Path":"./src/Part4"},
-        {"Path":"./res"}
+        {"Path":"./res"},
+        {"Path":"./img"},
+        {"Path":"./wav"}
     ],
     "Save": [{
         "Type":"WaveFile",
