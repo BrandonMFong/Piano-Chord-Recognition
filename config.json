@@ -14,7 +14,8 @@
                 }
             },
             "Part4":{
-                "AudioFile":"C4.wav"
+                "AudioFile":"C4.wav",
+                "NotesTable":"notestable.csv"
             }
         }
     }],
