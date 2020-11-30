@@ -34,18 +34,26 @@ for itr = 1:len
             chord(chorditr) = freq(itr);
             amp = ydft(itr);
         else 
-            % break; % get out of the loop if we are decreasing
-            if (chorditr > 3)
-                break;
-            end
+            % % break; % get out of the loop if we are decreasing
+            % if (chorditr > 3)
+            %     break;
+            % end
         end
-
+    else
+        % break; % get out of the loop if we are decreasing
+        if (chorditr > 3)
+            break;
+        end
+        
+        % I think I need to do this outside the threshold test because we might still be testing max in that case
         % if the index is 0, then we haven't found the next note
         % but if it is filled, that means we found a frequency
         if(chord(chorditr) ~= 0)
             chorditr = chorditr + 1;
+            amp = 0; % reset the test
         end 
     end
+
 
 end
 
