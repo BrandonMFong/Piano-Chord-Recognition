@@ -21,7 +21,7 @@
                 },
                 "Chord":{
                     "AudioFile":"C.chord.wav",
-                    "NotesTable":"notestable.csv",
+                    "Table":"chordtable.csv",
                     "AmplitudeThreshold":400,
                     "Length":3
                 }

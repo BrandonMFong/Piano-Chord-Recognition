@@ -1,7 +1,9 @@
 % Going to recognize the note that is being played in this audio 
 % https://www.mathworks.com/matlabcentral/answers/19970-how-to-see-freq-response-of-a-wave-file 
 % https://pages.mtu.edu/~suits/notefreqs.html 
-sprintf('NOTE:')
+% in this section I am identifying major chords
+
+sprintf('CHORD:')
 
 [y,fs] = audioread(const.Part4.Chord.AudioFile);
 ydft = fft(y);
@@ -33,11 +35,6 @@ for itr = 1:len
         if(ydft(itr) > amp) % test to see if there is a max
             chord(chorditr) = freq(itr);
             amp = ydft(itr);
-        else 
-            % % break; % get out of the loop if we are decreasing
-            % if (chorditr > 3)
-            %     break;
-            % end
         end
     else
         % break; % get out of the loop if we are decreasing
@@ -57,7 +54,7 @@ for itr = 1:len
 
 end
 
-notes = readtable(const.Part4.Chord.NotesTable);
+chords = readtable(const.Part4.Chord.Table);
 
 note_freq = table2array(notes(:,2))';
 [val,idx] = min(abs(note_freq-maxval));
