@@ -14,7 +14,7 @@
                 }
             },
             "Part4":{
-                "AudioFile":"F#.wav",
+                "AudioFile":"A#.wav",
                 "NotesTable":"notestable.csv",
                 "AmplitudeThreshold":400
             }
