@@ -28,15 +28,19 @@ for itr = 1:len
 end
 
 % Load the notes table given by https://pages.mtu.edu/~suits/notefreqs.html 
-notes = csvread(const.Part4.NotesTable);
+notes = readtable(const.Part4.NotesTable);
 % datacell = textscan( regexprep( fileread(const.Part4.NotesTable), '\$', '0' ), '%f%f', 'delimiter', ',', 'HeaderLines', 1);
 % Duration = datacell{1};
 % Input = datacell{1};
 % YourTable = table(Duration, Input);
 
-% I can conduct a binary search here
 a = 1:10
 n = 8.789;
 [val,idx]=min(abs(a-n));
 minVal=a(idx)
+
+note_freq = table2array(notes(:,2))';
+[val,idx] = min(abs(note_freq-maxval));
+
+notes(idx,1)
 
