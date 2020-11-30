@@ -1,35 +1,28 @@
 % Going to recognize the chord that is being played in this audio 
+% https://www.mathworks.com/matlabcentral/answers/19970-how-to-see-freq-response-of-a-wave-file 
+% https://pages.mtu.edu/~suits/notefreqs.html 
 
-% [xin,Fs] = audioread(const.Part4.AudioFile); % Get audio file from res dir
-% nfft = length(xin); % getting length of the sig
+[y,fs] = audioread(const.Part4.AudioFile);
+ydft = fft(y);
 
-% X = fft(xin,nfft); % gett the fft of the sig 
+% Gets the positive coefficients
+ydft = abs(ydft(1:length(y)/2+1));
 
-% p2 = abs(X/nfft);
-% p1 = p2(1:nfft/2+1);
-% p1(2:end-1) = 2*p1(2:end-1);
-% f = Fs*(0:(nfft/2))/nfft;
-% plot(f,p1);
+% x axis
+freq = 0:fs/length(y):fs/2;
 
-% title('Single-Sided Amplitude Spectrum of signal')
-% xlabel('f (Hz)')
-% ylabel('|P1(f)|')
+% % plot magnitude
+plot(freq,ydft);
+xlim([0 5000])
+xlabel('Hz');
+ylabel('Amplitude');
 
-[y, Fs] = audioread(const.Part4.AudioFile);      % y is sound data, Fs is sample frequency.
-t = (1:length(y))/Fs;         % time
-
-ind = find(t>0.1 & t<0.12);   % set time duration for waveform plot
-figure; subplot(1,2,1)
-plot(t(ind),y(ind))  
-axis tight         
-title(['Waveform of ' const.Part4.AudioFile])
-
-N = 2^12;                     % number of points to analyze
-c = fft(y(1:N))/N;            % compute fft of sound data
-p = 2*abs( c(2:N/2));         % compute power at each frequency
-f = (1:N/2-1)*Fs/N;           % frequency corresponding to p
-
-subplot(1,2,2)
-semilogy(f,p)
-axis([0 4000 10^-4 1])                
-title(['Power Spectrum of ' const.Part4.AudioFile])
+maxval = 0;
+amp = 0;
+len = length(freq);
+for itr = 1:len
+    if(ydft(itr) > amp)
+        maxval = freq(itr);
+        amp = ydft(itr);
+    end
+end
