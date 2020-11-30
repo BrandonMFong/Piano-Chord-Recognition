@@ -14,9 +14,17 @@
                 }
             },
             "Part4":{
-                "AudioFile":"A#.wav",
-                "NotesTable":"notestable.csv",
-                "AmplitudeThreshold":400
+                "Note":{
+                    "AudioFile":"A#.wav",
+                    "NotesTable":"notestable.csv",
+                    "AmplitudeThreshold":400
+                },
+                "Chord":{
+                    "AudioFile":"C.chord.wav",
+                    "NotesTable":"notestable.csv",
+                    "AmplitudeThreshold":400,
+                    "Length":3
+                }
             }
         }
     }],
