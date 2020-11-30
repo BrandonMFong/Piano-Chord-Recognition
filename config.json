@@ -12,6 +12,9 @@
                     "ImageFile":"lena.png",
                     "maskFile":"mask.csv"
                 }
+            },
+            "Part4":{
+                "AudioFile":"Cnote.wav"
             }
         }
     }],
@@ -21,6 +24,7 @@
         {"Path":"./src/Part1/sub"},
         {"Path":"./src/Part2"},
         {"Path":"./src/Part3"},
+        {"Path":"./src/Part4"},
         {"Path":"./res"}
     ],
     "Save": [{
