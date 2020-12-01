@@ -65,7 +65,7 @@ note_freq = table2array(notes(:,2))'; % get the transpose 2nd col
 % Figure out the chord
 % first I am going to identify basic chords, with base notes at the lower end of the spectrum 
 len = length(chords.name); % Get length 
-chorditr = 1; % init iterator 
+chorditr = 1; % init iterator, currently doing only the first column
 notename = const.Part4.Chord.DefaultNoteName; % init notename var
 
 % first row is the column index 
@@ -73,7 +73,6 @@ notename = const.Part4.Chord.DefaultNoteName; % init notename var
 % init flag to 0
 chord_flag = [1 2 3; 0 0 0];
 
-% currently doing only the first column
 %%%% IMPORTANT: Getting index from chord and using it on notes table %%%%
 for itr = 1:len 
     [val,idx] = min(abs(note_freq-chord(1,chorditr))); % use the cell that has the frequency, idx holds the index of the closest frequency
@@ -99,7 +98,15 @@ for itr = 1:len
         % static to three 
         for index = 1:3
             [val,idx] = min(abs(note_freq-chord(1,index))); % get col
-            if(notes(idx,index).Var1{1} == chords(itr,index).p1{1})
+            switch index 
+                case 1
+                    notename = chords(itr,chorditr).p1{1};
+                case 2
+                    notename = chords(itr,index).p2{1};
+                case 3
+                    notename = chords(itr,index).p3{1};
+            end
+            if(notes(idx,1).Var1{1} == notename)
                 chord_flag(2,index) = 1;
             end
         end
