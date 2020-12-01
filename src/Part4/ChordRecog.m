@@ -78,14 +78,7 @@ for itr = 1:len
     [val,idx] = min(abs(note_freq-chord(1,chorditr))); % use the cell that has the frequency, idx holds the index of the closest frequency
 
     % Determine which column we are on 
-    switch chorditr 
-        case 1
-            notename = chords(itr,chorditr).p1{1};
-        case 2
-            notename = chords(itr,chorditr).p2{1};
-        case 3
-            notename = chords(itr,chorditr).p3{1};
-    end
+    notename = getChordname(chords,itr,chorditr);
 
     % compare the name of the note with the one of the notes in each row
     % if we found a match in the row, then we have to check the rest of the row
@@ -98,14 +91,8 @@ for itr = 1:len
         % static to three 
         for index = 1:3
             [val,idx] = min(abs(note_freq-chord(1,index))); % get col
-            switch index 
-                case 1
-                    notename = chords(itr,chorditr).p1{1};
-                case 2
-                    notename = chords(itr,index).p2{1};
-                case 3
-                    notename = chords(itr,index).p3{1};
-            end
+            notename = getChordname(chords,itr,index);
+
             if(notes(idx,1).Var1{1} == notename)
                 chord_flag(2,index) = 1;
             end
@@ -120,5 +107,5 @@ for itr = 1:len
 end
 
 
-% sprintf('   - Chord from .wav file is: %s', string(notes(idx,1).Var1))
+sprintf('   - Chord from .wav file is: %s', string(chords(itr,4).name{1}))
 
