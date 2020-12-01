@@ -23,7 +23,8 @@
                     "AudioFile":"C.chord.wav",
                     "Table":"chordtable.csv",
                     "AmplitudeThreshold":400,
-                    "Length":3
+                    "Length":3,
+                    "DefaultNoteName":"C"
                 }
             }
         }

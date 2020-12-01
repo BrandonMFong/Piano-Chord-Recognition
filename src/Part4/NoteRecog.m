@@ -37,8 +37,8 @@ end
 notes = readtable(const.Part4.Note.NotesTable);
 
 % I am getting the first max freq coefficient and using that to determine the what note it is
-note_freq = table2array(notes(:,2))';
-[val,idx] = min(abs(note_freq-maxval));
+note_freq = table2array(notes(:,2))'; % Get the transpose of the second column 
+[val,idx] = min(abs(note_freq-maxval)); % find index of the closest match 
 
 % using the index of the first max val on the notes table
 sprintf('   - Note from .wav file is: %s', string(notes(idx,1).Var1))
