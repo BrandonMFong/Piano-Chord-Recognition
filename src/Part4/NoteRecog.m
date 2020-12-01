@@ -17,6 +17,7 @@ plot(freq,ydft);
 xlim([0 5000])
 xlabel('Hz');
 ylabel('Amplitude');
+title('Note Spectrum');
 
 maxval = 0; % variable that will hold the first max freq value over the amplitude threshold
 amp = 0; % var to hold the max amplitude 

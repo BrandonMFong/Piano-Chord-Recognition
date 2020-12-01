@@ -19,6 +19,7 @@ plot(freq,ydft);
 xlim(eval(const.Part4.Chord.PlotScope))
 xlabel('Hz');
 ylabel('Amplitude');
+title('Chord Spectrum');
 
 % init chord vars
 chordlength = const.Part4.Chord.Length; % Length of the chord, just doing three at first 
@@ -78,6 +79,9 @@ chord_flag = [1 2 3; 0 0 0];
 % break flag
 break_flag = false;
 
+% found flag
+found = false;
+
 %%%% IMPORTANT: Getting index from chord and using it on notes table %%%%
 for c_itr = 1:3
     for itr = 1:len 
@@ -104,7 +108,7 @@ for c_itr = 1:3
                 notename_inner = getChordname(chords,itr,index1);
                 
                 % get the closest chord of column index2
-                % sweep the whole chord against chords
+                % sweep the whole chord against chords table
                 for index2 = 1:3
                     [val,idx] = min(abs(note_freq-chord(1,index2))); % get col
                     note_inner_ = notes(idx,1).Var1{1};
@@ -115,12 +119,15 @@ for c_itr = 1:3
                 end
             end
     
+            % if found
             if((chord_flag(2,1) == 1) && (chord_flag(2,2) == 1) && (chord_flag(2,3) == 1))
                 break_flag = true; % get out of the loop, we found it
+                found = true;
                 break;
             else
                 chord_flag(2,:) = 0; % reset flags
-                break;
+                %break; % commenting out because I need to check the rest
+                        % of the table for the minor chords
             end
         end
     end
@@ -130,6 +137,9 @@ for c_itr = 1:3
     end
 end
 
-
-sprintf('   - Chord from .wav file is: %s', string(chords(itr,4).name{1}))
+if (found)
+    sprintf('   - Chord from .wav file is: %s', string(chords(itr,4).name{1}))
+else 
+    sprintf('   - Chord could not be identified')
+end
 
