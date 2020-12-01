@@ -24,7 +24,8 @@
                     "Table":"chordtable.csv",
                     "AmplitudeThreshold":400,
                     "Length":3,
-                    "DefaultNoteName":"C"
+                    "DefaultNoteName":"C",
+                    "PlotScope":"[0 500]"
                 }
             }
         }
