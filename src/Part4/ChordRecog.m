@@ -2,6 +2,8 @@
 % https://www.mathworks.com/matlabcentral/answers/19970-how-to-see-freq-response-of-a-wave-file 
 % https://pages.mtu.edu/~suits/notefreqs.html 
 % in this section I am identifying major chords
+% if I want to identify minor chords, I would just need to add the three note chords to the chordstable.wav
+% maybe if I have more time I would do that
 
 sprintf('CHORD:')
 
@@ -13,7 +15,7 @@ ydft = abs(ydft(1:length(y)/2+1));
 freq = 0:fs/length(y):fs/2;
 
 plot(freq,ydft);
-xlim([0 200])
+xlim([0 500])
 xlabel('Hz');
 ylabel('Amplitude');
 
@@ -63,7 +65,6 @@ note_freq = table2array(notes(:,2))'; % get the transpose 2nd col
 
 
 % Figure out the chord
-% first I am going to identify basic chords, with base notes at the lower end of the spectrum 
 len = length(chords.name); % Get length 
 chorditr = 1; % init iterator, currently doing only the first column
 notename = const.Part4.Chord.DefaultNoteName; % init notename var
@@ -73,36 +74,58 @@ notename = const.Part4.Chord.DefaultNoteName; % init notename var
 % init flag to 0
 chord_flag = [1 2 3; 0 0 0];
 
+% break flag
+break_flag = false;
+
 %%%% IMPORTANT: Getting index from chord and using it on notes table %%%%
-for itr = 1:len 
-    [val,idx] = min(abs(note_freq-chord(1,chorditr))); % use the cell that has the frequency, idx holds the index of the closest frequency
+for c_itr = 1:3
+    for itr = 1:len 
+        [val,idx] = min(abs(note_freq-chord(1,chorditr))); % use the cell that has the frequency, idx holds the index of the closest frequency
+    
+        % Determine which column we are on 
+        notename = getChordname(chords,itr,c_itr);
+    
+        % compare the name of the note with the one of the notes in each row
+        % if we found a match in the row, then we have to check the rest of the row
+        % this will be strictly 3 note chord identification
+        % we go into this if we found a match
+        note_ = notes(idx,1).Var1{1};
+        if(note_ == notename)
+            chord_flag(2,c_itr) = 1; % set the flag of the itr to true 
+    
+            % check all columns
+            % static to three 
+            for index1 = 1:3
+                
+                % remember the chord table has the freq from low to high
+                % meaning inversions would be arranged differently than
+                % root notes
+                notename_inner = getChordname(chords,itr,index1);
+                
+                % get the closest chord of column index2
+                % sweep the whole chord against chords
+                for index2 = 1:3
+                    [val,idx] = min(abs(note_freq-chord(1,index2))); % get col
+                    note_inner_ = notes(idx,1).Var1{1};
 
-    % Determine which column we are on 
-    notename = getChordname(chords,itr,chorditr);
-
-    % compare the name of the note with the one of the notes in each row
-    % if we found a match in the row, then we have to check the rest of the row
-    % this will be strictly 3 note chord identification
-    % we go into this if we found a match
-    if(notes(idx,1).Var1{1} == notename)
-        chord_flag(2,chorditr) = 1; % set the flag of the itr to true 
-
-        % check all columns
-        % static to three 
-        for index = 1:3
-            [val,idx] = min(abs(note_freq-chord(1,index))); % get col
-            notename = getChordname(chords,itr,index);
-
-            if(notes(idx,1).Var1{1} == notename)
-                chord_flag(2,index) = 1;
+                    if(note_inner_ == notename_inner)
+                        chord_flag(2,index1) = 1;
+                    end
+                end
+            end
+    
+            if((chord_flag(2,1) == 1) && (chord_flag(2,2) == 1) && (chord_flag(2,3) == 1))
+                break_flag = true; % get out of the loop, we found it
+                break;
+            else
+                chord_flag(2,:) = 0; % reset flags
+                break;
             end
         end
+    end
 
-        if((chord_flag(2,1) == 1) && (chord_flag(2,2) == 1) && (chord_flag(2,3) == 1))
-            break;
-        else
-            chord_flag(2,:) = 0; % reset flags
-        end
+    if(break_flag) 
+        break;
     end
 end
 

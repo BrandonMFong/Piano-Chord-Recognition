@@ -20,7 +20,7 @@
                     "AmplitudeThreshold":400
                 },
                 "Chord":{
-                    "AudioFile":"C.chord.first_inv.wav",
+                    "AudioFile":"D.chord.first_inv.wav",
                     "Table":"chordtable.csv",
                     "AmplitudeThreshold":400,
                     "Length":3,
