@@ -1,6 +1,4 @@
 % Step 2
-% I am going to use the bfong1.wav used in Part 2 of this project
-% Nevermind, strong.mat is already preloaded
 % Example link: https://www.mathworks.com/help/signal/ug/dct-for-speech-signal-compression.html
 clear dct;
 load('strong.mat');
