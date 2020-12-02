@@ -2,7 +2,7 @@
 % https://www.mathworks.com/matlabcentral/answers/19970-how-to-see-freq-response-of-a-wave-file 
 % https://pages.mtu.edu/~suits/notefreqs.html 
 
-NoteRecog
+% NoteRecog
 
 ChordRecog
 
