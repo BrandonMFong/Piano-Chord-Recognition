@@ -13,6 +13,7 @@ ydft = abs(ydft(1:length(y)/2+1));
 freq = 0:fs/length(y):fs/2;
 
 % plot magnitude
+fig();
 plot(freq,ydft);
 xlim(eval(const.Part4.Chord.PlotScope))
 xlabel('Hz');
