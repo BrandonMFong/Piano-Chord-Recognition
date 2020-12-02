@@ -19,9 +19,10 @@ xpc = need / length(X)*100;
 X(ind(need+1:end)) = 0; % zeroing out the coefficients with 0.1% of energy 
 xx = idct(X);
 
-figure;
+fig();
 plot([x;xx;x - xx]');
 legend('Original', [int2str(xpc) '% of coeffs.'], 'Difference', 'Location', 'best');
+title('Her');
 
 
 % him audio 
@@ -39,6 +40,7 @@ ypc = need/length(Y)*100;
 Y(ind(need+1:end)) = 0;
 yy = idct(Y);
 
-figure;
+fig();
 plot([y;yy;y-yy]')
 legend('Original',[int2str(ypc) '% of coeffs.'], 'Difference', 'Location', 'best');
+title('Him');

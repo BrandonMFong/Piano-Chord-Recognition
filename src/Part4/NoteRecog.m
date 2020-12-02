@@ -14,7 +14,7 @@ freq = 0:fs/length(y):fs/2;
 
 % plot magnitude
 plot(freq,ydft);
-xlim([0 5000])
+xlim(eval(const.Part4.Chord.PlotScope))
 xlabel('Hz');
 ylabel('Amplitude');
 title('Note Spectrum');

@@ -7,6 +7,7 @@
 lena = im2double(imread(const.Part3.Step1.ImageFile)); % read img and convert to a double matrix 
 [r,c,dim] = size(lena); % get size
 fig();imshow(lena);
+title('Original');
 
 % get the dct matrix
 D = dctmtx(8);
@@ -44,3 +45,4 @@ for itr = 1:dim % will always be 3
 end
 
 fig();imshow(final_img); % show the image
+title('Compressed');

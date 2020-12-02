@@ -15,12 +15,13 @@
             },
             "Part4":{
                 "Note":{
-                    "AudioFile":"A#.wav",
+                    "AudioFile":"C.wav",
                     "NotesTable":"notestable.csv",
-                    "AmplitudeThreshold":400
+                    "AmplitudeThreshold":400,
+                    "PlotScope":"[0 500]"
                 },
                 "Chord":{
-                    "AudioFile":"C.chord.first_inv.wav",
+                    "AudioFile":"Eminor.chord.wav",
                     "Table":"chordtable.csv",
                     "AmplitudeThreshold":400,
                     "Length":3,

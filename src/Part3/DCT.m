@@ -2,7 +2,7 @@
 % Running compression on image files and audio files
 
 % Image DCT
-img 
+% img 
 
 % Speech signal DCT
-audio 
+% audio 

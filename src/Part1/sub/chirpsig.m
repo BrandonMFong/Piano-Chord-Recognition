@@ -1,4 +1,4 @@
-% Example 8: Chirp Signal
+w% Example 8: Chirp Signal
 
 Fs = 200;
 t = 0:1/Fs:1;
