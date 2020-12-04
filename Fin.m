@@ -24,8 +24,10 @@ for i = 1:size(savevar.Save,1)
 
     % Image is .jpg file
     elseif savevar.Save(i).Type == "Image"
-        eval(['val = ',savevar.Save(i).VariableName,';']);
-        imwrite(val,savevar.Save(i).Path);
+        if(exist(savevar.Save(i).VariableName,'var') == 1)
+            eval(['val = ',savevar.Save(i).VariableName,';']);
+            imwrite(val,savevar.Save(i).Path);
+        end 
     else
         fprintf('%s not saved into file, please check Save.json if Type is specified.', savevar.Save(i).VariableName); 
     end
