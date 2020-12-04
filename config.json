@@ -43,9 +43,8 @@
         {"Path":"./wav"}
     ],
     "Save": [{
-        "Type":"WaveFile",
-        "Filename":"filteredsig.wav",
-        "SamplingFrequency":"11025",
-        "MatlabVariable":"yout"
+        "Type":"Image",
+        "VariableName":"final_img",
+        "Path":"./img/lena.comp.png"
     }]
 }

@@ -46,3 +46,5 @@ end
 
 fig();imshow(final_img); % show the image
 title('Compressed');
+
+

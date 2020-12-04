@@ -35,7 +35,7 @@ Setup
 %   - Fourier Transform is executed on preloaded his/her audio files in audio.m script
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% DCT
+DCT
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Part 4: Piano Chord Recognition
@@ -55,7 +55,7 @@ Setup
 %               resulting in a chord
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-main
+% main
 
 %%% END %%%
 Fin
